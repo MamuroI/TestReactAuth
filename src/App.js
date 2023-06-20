@@ -7,8 +7,14 @@ import axios from "axios";
 import { urlWeather } from "./endpoints";
 
 function App() {
+    // react normal client Id
+    /*
     const clientId =
         "729249455465-ri8toar5movqsrs6018ta9si8t2lhna1.apps.googleusercontent.com";
+    */
+    // heroku clientId
+    const clientId =
+        "729249455465-uqopdcr9l1313s00i2g05u0dtce6ggvb.apps.googleusercontent.com";
     const [profile, setProfile] = useState(null);
 
     useEffect(() => {
