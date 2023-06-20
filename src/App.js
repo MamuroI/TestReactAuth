@@ -5,8 +5,16 @@ import { GoogleLogin, GoogleLogout } from "react-google-login";
 import { gapi } from "gapi-script";
 import axios from "axios";
 import { urlWeather } from "./endpoints";
+import liff from '@line/liff';
+import logo from './logo.svg'
 
 function App() {
+    const [pictureUrl, setPictureUrl] = useState(logo);
+    const [idToken, setIdToken] = useState("");
+    const [displayName, setDisplayName] = useState("");
+    const [statusMessage, setStatusMessage] = useState("");
+    const [userId, setUserId] = useState("");
+
     // react normal client Id
     /*
     const clientId =
@@ -46,10 +54,42 @@ function App() {
         setProfile(null);
     };
 
+    const initLine = () => {
+      liff.init({ liffId: '1661467371-OzoMj5WM' }, () => {
+        if (liff.isLoggedIn()) {
+          runApp();
+        } else {
+          liff.login();
+        }
+      }, err => console.error(err));
+    }
+  
+    const runApp = () => {
+      const idToken = liff.getIDToken();
+      setIdToken(idToken);
+      liff.getProfile().then(profile => {
+        console.log(profile);
+        setDisplayName(profile.displayName);
+        setPictureUrl(profile.pictureUrl);
+        setStatusMessage(profile.statusMessage);
+        setUserId(profile.userId);
+      }).catch(err => console.error(err));
+    }
+  
+    const logoutLine = () => {
+      liff.logout();
+      window.location.reload();
+    }
+
+    useEffect(()=>{
+      initLine()
+    },[])
+  
+
     return (
         <div className="App">
             <h1>Test Login App</h1>
-            {profile ? (
+            {/* {profile ? (
                 <div>
                     <img src={profile.imageUrl} alt="profilePic" />
                     <h3>User Logged in</h3>
@@ -72,7 +112,18 @@ function App() {
                     cookiePolicy={"single_host_origin"}
                     isSignedIn={true}
                 />
-            )}
+            )} */}
+            <hr/>
+            <div style={{textAlign: "center"}}>
+              <h1>LINE Login</h1>
+              <img src={pictureUrl} width="150px" height="150px" alt="profilePic"/>
+              <p style={{textAlign: "left", marginLeft: "40%"}}><b>id token: </b> { idToken }</p>
+              <p style={{textAlign: "left", marginLeft: "40%"}}><b>display name: </b> {displayName}</p>
+              <p style={{textAlign: "left", marginLeft: "40%"}}><b>status message: </b> { statusMessage }</p>
+              <p style={{textAlign: "left", marginLeft: "40%"}}><b>user id: </b> { userId }</p>
+
+              <button onClick={() => logoutLine()} style={{width: 200, height: 30}}>Logout</button>
+            </div>
         </div>
     );
 }
