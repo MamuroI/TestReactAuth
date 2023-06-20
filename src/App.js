@@ -117,10 +117,10 @@ function App() {
             <div style={{textAlign: "center"}}>
               <h1>LINE Login</h1>
               <img src={pictureUrl} width="150px" height="150px" alt="profilePic"/>
-              <p style={{textAlign: "left", marginLeft: "40%"}}><b>id token: </b> { idToken }</p>
-              <p style={{textAlign: "left", marginLeft: "40%"}}><b>display name: </b> {displayName}</p>
-              <p style={{textAlign: "left", marginLeft: "40%"}}><b>status message: </b> { statusMessage }</p>
-              <p style={{textAlign: "left", marginLeft: "40%"}}><b>user id: </b> { userId }</p>
+              <p style={{textAlign: "left", marginLeft: "30%",marginRight:"30%", wordBreak: "break-all"}}><b>id token: </b> { idToken }</p>
+              <p style={{textAlign: "left", marginLeft: "30%",marginRight:"30%", wordBreak: "break-all"}}><b>display name: </b> {displayName}</p>
+              <p style={{textAlign: "left", marginLeft: "30%",marginRight:"30%", wordBreak: "break-all"}}><b>status message: </b> { statusMessage }</p>
+              <p style={{textAlign: "left", marginLeft: "30%",marginRight:"30%", wordBreak: "break-all"}}><b>user id: </b> { userId }</p>
 
               <button onClick={() => logoutLine()} style={{width: 200, height: 30}}>Logout</button>
             </div>
