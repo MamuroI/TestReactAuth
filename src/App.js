@@ -21,12 +21,12 @@ function App() {
         gapi.load("client:auth2", initClient);
     }, []);
 
-    useEffect(() =>{
-      axios.get(urlWeather)
-      .then((response) => {
-        console.log(response.data)
-      })
-    })
+    // useEffect(() =>{
+    //   axios.get(urlWeather)
+    //   .then((response) => {
+    //     console.log(response.data)
+    //   })
+    // })
 
     const onSuccess = (res) => {
         setProfile(res.profileObj);
